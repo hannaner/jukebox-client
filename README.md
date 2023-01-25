@@ -55,4 +55,4 @@ Queue up your favorite songs in a playlist :musical_note:
 </figure>
 
 ---
-Check out jukebox-server [here] (https://github.com/hannaner/jukebox-server)
+Check out jukebox-server [here](https://github.com/hannaner/jukebox-server)
