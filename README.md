@@ -21,6 +21,7 @@ Queue up your favorite songs in a playlist :musical_note:
 ### Version 3
 - As a user, I want to link this to my Spotify account.
 - As a user, I want to make my playlist private or public.
+- As a user, I want to "insert" a coin to play a random song.
 
 ## Wireframes
 <figure>
