@@ -26,8 +26,12 @@ Queue up your favorite songs in a playlist :musical_note:
     <img alt="wireframes-1" src="images/wireframes-1.jpg" width="100%" height="100%">
 </figure>
 <figure>
-    <figcaption>Create, update, view playlist</figcaption>
+    <figcaption>Create and view playlist</figcaption>
     <img alt="wireframes-2" src="images/wireframes-2.jpg" width="100%" height="100%">
+</figure>
+<figure>
+    <figcaption>Edit and delete playlist</figcaption>
+    <img alt="wireframes-3" src="images/wireframes-3.jpg" width="100%" height="100%">
 </figure>
 
 ## Entity Relationship Diagram (ERD)
