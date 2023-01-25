@@ -1,5 +1,24 @@
 # Jukebox
-Queue up your favorite songs
+Queue up your favorite songs in a playlist :musical_note:
+
+## User stories
+### MVP
+- As a user, I want to create an account.
+- As a user, I want to login.
+- As a user, I want to create a playlist.
+- As a user, I want to add songs to my playlist.
+- As a user, I want to view my created playlists.
+- As a user, I want to view a selected playlist.
+- As a user, I want to edit a single playlist.
+- As a user, I want to delete songs from a selected playlist.
+
+### Version 2
+- As a user, I want to view others playlists.
+- As a user, I want to play the selected song.
+
+### Version 3
+- As a user, I want to link this to my Spotify account.
+- As a user, I want to make my playlist private or public.
 
 ## Wireframes
 <figure>
@@ -7,14 +26,8 @@ Queue up your favorite songs
     <img alt="wireframes" src="images/wireframes.jpg" width="70%" height="70%">
 </figure>
 
-## User stories
-### MVP
-- Select a card, then select another card to match its pair
-- If the second card does not match the first, select a new second card
-- You have 3 chances (lives) to match all pairs
-- Click the "Restart" button to restart the game
-
-### Version 2
-
-
-### Version 3
+## Entity Relationship Diagram (ERD)
+<figure>
+    <figcaption></figcaption>
+    <img alt="erd" src="images/erd.jpg" width="70%" height="70%">
+</figure>
