@@ -15,6 +15,7 @@ Queue up your favorite songs in a playlist :musical_note:
 ### Version 2
 - As a user, I want to view others playlists.
 - As a user, I want to play the selected song.
+- As a user, I want to delete my account.
 
 ### Version 3
 - As a user, I want to link this to my Spotify account.
