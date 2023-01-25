@@ -5,6 +5,7 @@ Queue up your favorite songs in a playlist :musical_note:
 ### MVP
 - As a user, I want to create an account.
 - As a user, I want to login.
+- As a user, I want to know if my credentials are incorrect.
 - As a user, I want to create a playlist.
 - As a user, I want to add songs to my playlist.
 - As a user, I want to view my created playlists.
