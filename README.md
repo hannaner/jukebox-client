@@ -53,3 +53,6 @@ Queue up your favorite songs in a playlist :musical_note:
     <figcaption></figcaption>
     <img alt="erd" src="images/erd.jpg" width="100%" height="100%">
 </figure>
+
+---
+Check out jukebox-server [here] (https://github.com/hannaner/jukebox-server)
