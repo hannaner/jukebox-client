@@ -14,7 +14,7 @@ Queue up your favorite songs in a playlist :musical_note:
 - As a user, I want to delete songs from a selected playlist.
 
 ### Version 2
-- As a user, I want to view others playlists.
+- As a user, I want to view and favorite others playlists.
 - As a user, I want to play the selected song.
 - As a user, I want to delete my account.
 
