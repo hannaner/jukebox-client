@@ -22,8 +22,12 @@ Queue up your favorite songs in a playlist :musical_note:
 
 ## Wireframes
 <figure>
-    <figcaption>Wireframes</figcaption>
-    <img alt="wireframes" src="images/wireframes.jpg" width="98%" height="98%">
+    <figcaption>Login</figcaption>
+    <img alt="wireframes-1" src="images/wireframes-1.jpg" width="98%" height="98%">
+</figure>
+<figure>
+    <figcaption>Create, update, view playlist</figcaption>
+    <img alt="wireframes-2" src="images/wireframes-2.jpg" width="98%" height="98%">
 </figure>
 
 ## Entity Relationship Diagram (ERD)
