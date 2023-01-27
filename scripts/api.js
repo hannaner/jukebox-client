@@ -1,6 +1,7 @@
-// need to store token
-export const login = (data) => {
-    return fetch(`http://localhost:8000/login`, 
+import { store } from './store.js'
+
+export const signup = (data) => {
+    return fetch(`http://localhost:8000/sign-up`, 
     {
         method: 'POST',
         headers: {
@@ -11,8 +12,8 @@ export const login = (data) => {
     })
 }
 
-export const signup = (data) => {
-    return fetch(`http://localhost:8000/signup`, 
+export const login = (data) => {
+    return fetch(`http://localhost:8000/login`, 
     {
         method: 'POST',
         headers: {

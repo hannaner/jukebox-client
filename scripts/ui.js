@@ -1,3 +1,5 @@
+import { store } from './store.js'
+
 /* - all of auth container - */
 const authContainer = document.querySelector('#auth-container')
 
@@ -8,7 +10,7 @@ const playlistShowContainer = document.querySelector('#playlist-show-container')
 const messageContainer = document.querySelector('#message-container')
 
 
-/* ------ Failure message ------ */
+/* ------ Failure messages ------ */
 export const loginFailure = (error) => {
     messageContainer.innerHTML = 
     `
@@ -17,10 +19,16 @@ export const loginFailure = (error) => {
     `
 }
 
+export const onFailure = (error) => {
+    messageContainer.innerHTML = `error ${error}`
+}
+
 /* ------ User Actions ------ */
 export const onLoginSuccess = (userToken) => {
     messageContainer.innerHTML = ''
-    // need to store token
+    store.userToken = userToken
+    authContainer.classList.add('hide')
+    playlistIndexContainer.classList.remove('hide')
 }
 
 export const onSignupSuccess = () => {

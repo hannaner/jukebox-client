@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="./scripts/app.js"></script>
+    <link rel="stylesheet" href="./style/index.css">
     <title>jukebox</title>
 </head>
 <body>
     <h1>jukebox</h1>
     <!-- Login/sign-up form -->
-    <div class="auth-container">
+    <div id="auth-container">
         <h2>Welcome back</h2>
         <form id="login-container">
             <div>
@@ -38,14 +39,15 @@
         </form>
     </div>
     
+    <!-- Main content -->
+    <div id="playlist-index-container" class="hide">playlist index container</div>
+    
+    <div id="playlist-show-container" class="hide">playlist show container</div>
+    
+    <div id="playlist-create-container" class="hide">playlist create container</div>
+    
     <!-- message container for error messages -->
     <div id="message-container"></div>
-    
-    <!-- Main content -->
-    <div id="playlist-index-container" class="hide"></div>
-
-    <div id="playlist-show-container" class="hide"></div>
-    <div id="playlist-create-container" class="hide"></div>
 
 </body>
 </html>
