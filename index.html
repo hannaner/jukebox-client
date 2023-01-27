@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="module" src="./scripts/app.js"></script>
+    <title>jukebox</title>
+</head>
+<body>
+    <h1>jukebox</h1>
+    <!-- Login/sign-up form -->
+    <div class="auth-container">
+        <h2>Welcome back</h2>
+        <form id="login-container">
+            <div>
+                <label for="email-input">Email address</label>
+                <input type="email" id="email-input" name="email" placeholder="email@address.com">
+            </div>
+            <div>
+                <label for="password-input">Password</label>
+                <input type="password" id="password-input" name="password">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <h2>Don't have an account? Sign up</h2>
+        <form id="signup-container">
+            <div>
+                <label for="email-input">Email address</label>
+                <input type="email" id="email-input" name="email" placeholder="email@address.com">
+            </div>
+            <div>
+                <label for="password-input">Password</label>
+                <input type="password" id="password-input" name="password">
+            </div>
+            <button type="submit">Sign up</button>
+
+        </form>
+    </div>
+    
+    <!-- message container for error messages -->
+    <div id="message-container"></div>
+    
+    <!-- Main content -->
+    <div id="playlist-index-container" class="hide"></div>
+
+    <div id="playlist-show-container" class="hide"></div>
+    <div id="playlist-create-container" class="hide"></div>
+
+</body>
+</html>
