@@ -30,4 +30,16 @@ signupContainer.addEventListener('submit', (event) => {
         .catch(onFailure)
 })
 
-loginContainer.addEventListener('')
+loginContainer.addEventListener('submit', (event) => {
+    event.preventDefault()
+    const userData = {
+        credentials: {
+            email: event.target['email'].value,
+            password: event.target['password'].value
+        }
+    }
+    login(userData)
+        .then((res) => res.json())
+        .then((res) => onLoginSuccess(res.token))
+        .catch(loginFailure)
+})
