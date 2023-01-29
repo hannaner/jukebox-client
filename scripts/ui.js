@@ -55,5 +55,7 @@ export const onIndexPlaylistSuccess = (playlists) => {
             <h3>${playlist.name}</h3>
             <button type="button" data-id="${playlist._id}">View playlist</button>
         `
+
+        indexPlaylistContainer.appendChild(div)
     })
 }

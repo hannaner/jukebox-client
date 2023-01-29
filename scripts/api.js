@@ -37,3 +37,11 @@ export const createPlaylist = (data) => {
         body: JSON.stringify(data)
     })
 }
+
+export const indexPlaylists = () => {
+    return fetch(`http://localhost:8000/playlists`, {
+        headers: {
+            'Authorization': `Bearer ${store.userToken}`
+        }
+    })
+}

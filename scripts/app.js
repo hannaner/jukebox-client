@@ -4,12 +4,14 @@ import {
     onFailure,
     loginFailure,
     onCreatePlaylistSuccess,
+    onIndexPlaylistSuccess,
 } from './ui.js'
 
 import {
     login,
     signup,
     createPlaylist,
+    indexPlaylists,
 } from './api.js'
 
 const loginContainer = document.querySelector('#login-container')
@@ -46,7 +48,10 @@ loginContainer.addEventListener('submit', (event) => {
     login(userData)
         .then((res) => res.json())
         .then((res) => onLoginSuccess(res.token))
-        // need to add in response data to load playlists
+        // running playlist indexes somehow throw loginFailure
+        // .then((res) => res.json())
+        // .then((res) => onIndexPlaylistSuccess(res.playlists))
+        // .then(indexPlaylists)
         .catch(loginFailure)
 })
 
@@ -76,6 +81,8 @@ playlistCreateForm.addEventListener('submit', (event) => {
 
     createPlaylist(playlistData)
         .then(onCreatePlaylistSuccess)
+        // .then((res) => res.json())
+        .then((res) => onIndexPlaylistSuccess(res.playlists))
         .catch(onFailure)
 })
 
