@@ -11,7 +11,7 @@ Queue up your favorite songs in a playlist :musical_note:
 - As a user, I want to view my created playlists.
 - As a user, I want to view a selected playlist.
 - As a user, I want to edit a single playlist.
-- As a user, I want to delete songs from a selected playlist.
+- As a user, I want to delete songs from a selected playlist, or delete the whole playlist.
 
 ### Version 2
 - As a user, I want to view and favorite others playlists.
