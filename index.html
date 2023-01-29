@@ -40,11 +40,22 @@
     </div>
     
     <!-- Main content -->
-    <div id="playlist-index-container" class="hide">playlist index container</div>
+    <div id="playlist-index-container" class="hide">
+        <p>playlist index container</p>
+        <button type="button" id="start-playlist-button">Create playlist</button>
+    </div>
     
     <div id="playlist-show-container" class="hide">playlist show container</div>
     
-    <div id="playlist-create-container" class="hide">playlist create container</div>
+    <div id="playlist-create-container" class="hide">playlist create container
+        <form id="playlist-create-form">
+            <input type="text" name="name" placeholder="playlist name">
+            <p>Add a song</p>
+            <input type="text" name="song-title" placeholder="song title">
+            <input type="text" name="song-artist" placeholder="artist">
+            <input type="submit" value="create">
+        </form>
+    </div>
     
     <!-- message container for error messages -->
     <div id="message-container"></div>
