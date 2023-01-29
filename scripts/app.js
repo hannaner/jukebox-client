@@ -51,7 +51,7 @@ loginContainer.addEventListener('submit', (event) => {
 })
 
 /* ------ Playlist Actions ------ */
-// event listener to reveal playlist create form
+// event listener to reveal playlist create form from playlist index container
 startPlaylistCreateButton.addEventListener('click', (event) => {
     event.preventDefault()
     playlistIndexContainer.classList.add('hide')
@@ -63,7 +63,14 @@ playlistCreateForm.addEventListener('submit', (event) => {
 
     const playlistData = {
         playlist: {
-            name: event.target['name'].value
+            name: event.target['name'].value,
+            songs: [
+                {
+                    title: event.target['song-title'].value,
+                    artist: event.target['song-artist'].value,
+                    link: event.target['song-link'].value
+                }
+            ]
         }
     }
 
@@ -71,3 +78,4 @@ playlistCreateForm.addEventListener('submit', (event) => {
         .then(onCreatePlaylistSuccess)
         .catch(onFailure)
 })
+
