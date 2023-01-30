@@ -32,7 +32,7 @@ export const createPlaylist = (data) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${store.userToken}`
+            'Authorization': `Bearer ${store.userToken}`
         },
         body: JSON.stringify(data)
     })
