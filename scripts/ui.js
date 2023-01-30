@@ -14,6 +14,8 @@ const playlistCreateForm = document.querySelector('#playlist-create-form')
 
 const messageContainer = document.querySelector('#message-container')
 
+const createPlaylistButton = document.querySelector('#start-playlist-button')
+
 
 /* ------ Failure messages ------ */
 export const loginFailure = (error) => {
@@ -69,17 +71,27 @@ export const onIndexPlaylistSuccess = (playlists) => {
 export const onShowPlaylistSuccess = (playlist) => {
     // hiding index container, showing playlist container
     playlistIndexContainer.classList.add('hide')
-    playlistCreateContainer.classList.add('hide')
+    createPlaylistButton.classList.add('hide')
     playlistShowContainer.classList.remove('hide')
     
     // creating a new element to reveal the playlist
     const div = document.createElement('div')
 
-    div.innerHTML = `
-        <h2>${playlist.name}</h2>
-        <p>${playlist.songs[0].title}</p>
-        <p>${playlist.songs[0].artist}</p>
-        <p><a href="${playlist.songs[0].link}">play</a></p>
-    `
-    playlistShowContainer.appendChild(div)
+    // iterate through songs array if there's an array
+    if (playlist.songs.length > 0){
+        for (i=0; i < playlist.songs.length ; i++){
+            div.innerHTML = `
+                <h2>${playlist.name}</h2>
+                <p>${playlist.songs[i].title}</p>
+                <p>${playlist.songs[i].artist}</p>
+                <p><a href="${playlist.songs[i].link}">${playlist.songs[i].link}</a></p>
+            `
+            playlistShowContainer.appendChild(div)
+        }
+    } else {
+        div.innerHTML = `
+            <p>You don't have any songs added!</p>
+        `
+        playlistShowContainer.appendChild(div)
+    }
 }
