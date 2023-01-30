@@ -70,7 +70,8 @@ export const onShowPlaylistSuccess = (playlist) => {
     // hiding index container, showing playlist container
     playlistIndexContainer.classList.add('hide')
     playlistCreateContainer.classList.add('hide')
-
+    playlistShowContainer.classList.remove('hide')
+    
     // creating a new element to reveal the playlist
     const div = document.createElement('div')
 
