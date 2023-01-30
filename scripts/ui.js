@@ -79,7 +79,7 @@ export const onShowPlaylistSuccess = (playlist) => {
 
     // iterate through songs array if there's an array
     if (playlist.songs.length > 0){
-        for (i=0; i < playlist.songs.length ; i++){
+        for (let i=0; i < playlist.songs.length ; i++){
             div.innerHTML = `
                 <h2>${playlist.name}</h2>
                 <p>${playlist.songs[i].title}</p>
