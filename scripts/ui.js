@@ -15,7 +15,8 @@ const messageContainer = document.querySelector('#message-container')
 export const loginFailure = (error) => {
     messageContainer.innerHTML = 
     `
-    <p>Oops! Incorrect email/password</p>    
+    <p>Oops! Incorrect email/password</p> 
+    <p>${error}</p>   
     `
 }
 
@@ -56,6 +57,7 @@ export const onIndexPlaylistSuccess = (playlists) => {
             <button type="button" data-id="${playlist._id}">View playlist</button>
         `
 
-        indexPlaylistContainer.appendChild(div)
+        playlistIndexContainer.appendChild(div)
     })
 }
+

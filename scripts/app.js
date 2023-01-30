@@ -48,10 +48,10 @@ loginContainer.addEventListener('submit', (event) => {
     login(userData)
         .then((res) => res.json())
         .then((res) => onLoginSuccess(res.token))
-        // running playlist indexes somehow throw loginFailure
-        // .then((res) => res.json())
-        // .then((res) => onIndexPlaylistSuccess(res.playlists))
-        // .then(indexPlaylists)
+        .then(indexPlaylists)
+        .then((res) => res.json())
+        .then((res) => onIndexPlaylistSuccess(res.playlists))
+        .then(indexPlaylists)
         .catch(loginFailure)
 })
 
