@@ -45,3 +45,11 @@ export const indexPlaylists = () => {
         }
     })
 }
+
+export const showPlaylist = (playlistId) => {
+    return fetch(`http://localhost:8000/playlists/${playlistId}`, {
+        headers: {
+            'Authorization': `Bearer ${store.userToken}`
+        }
+    })
+}

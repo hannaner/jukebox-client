@@ -5,7 +5,11 @@ const authContainer = document.querySelector('#auth-container')
 
 /* - playlist container selectors */
 const playlistIndexContainer = document.querySelector('#playlist-index-container')
+
 const playlistShowContainer = document.querySelector('#playlist-show-container')
+
+const playlistCreateContainer = document.querySelector('#playlist-create-container')
+
 const playlistCreateForm = document.querySelector('#playlist-create-form')
 
 const messageContainer = document.querySelector('#message-container')
@@ -16,8 +20,8 @@ export const loginFailure = (error) => {
     messageContainer.innerHTML = 
     `
     <p>Oops! Incorrect email/password</p> 
-    <p>${error}</p>   
     `
+    console.log(error)
 }
 
 export const onFailure = (error) => {
@@ -43,6 +47,8 @@ export const onCreatePlaylistSuccess = () => {
 }
 
 export const onIndexPlaylistSuccess = (playlists) => {
+    // need to find playlists where owner is the user._id
+    // console.log(user)
     playlists.forEach((playlist) => {
         const div = document.createElement('div')
 
@@ -54,10 +60,25 @@ export const onIndexPlaylistSuccess = (playlists) => {
 
         div.innerHTML = `
             <h3>${playlist.name}</h3>
-            <button type="button" data-id="${playlist._id}">View playlist</button>
+            <button type="button" data-id="${playlist._id}" class="show-playlist">View playlist</button>
         `
-
         playlistIndexContainer.appendChild(div)
     })
 }
 
+export const onShowPlaylistSuccess = (playlist) => {
+    // hiding index container, showing playlist container
+    playlistIndexContainer.classList.add('hide')
+    playlistCreateContainer.classList.add('hide')
+
+    // creating a new element to reveal the playlist
+    const div = document.createElement('div')
+
+    div.innerHTML = `
+        <h2>${playlist.name}</h2>
+        <p>${playlist.songs[0].title}</p>
+        <p>${playlist.songs[0].artist}</p>
+        <p><a href="${playlist.songs[0].link}">play</a></p>
+    `
+    playlistShowContainer.appendChild(div)
+}

@@ -5,6 +5,7 @@ import {
     loginFailure,
     onCreatePlaylistSuccess,
     onIndexPlaylistSuccess,
+    onShowPlaylistSuccess,
 } from './ui.js'
 
 import {
@@ -12,6 +13,7 @@ import {
     signup,
     createPlaylist,
     indexPlaylists,
+    showPlaylist,
 } from './api.js'
 
 const loginContainer = document.querySelector('#login-container')
@@ -24,6 +26,7 @@ const playlistCreateForm = document.querySelector('#playlist-create-form')
 const startPlaylistCreateButton = document.querySelector('#start-playlist-button')
 
 /* ------ User actions ------ */
+// Sign up
 signupContainer.addEventListener('submit', (event) => {
     event.preventDefault()
     const userData = {
@@ -37,6 +40,7 @@ signupContainer.addEventListener('submit', (event) => {
         .catch(onFailure)
 })
 
+// Login
 loginContainer.addEventListener('submit', (event) => {
     event.preventDefault()
     const userData = {
@@ -81,8 +85,26 @@ playlistCreateForm.addEventListener('submit', (event) => {
 
     createPlaylist(playlistData)
         .then(onCreatePlaylistSuccess)
-        // .then((res) => res.json())
+        .then(indexPlaylists)
+        .then((res).res.json())
         .then((res) => onIndexPlaylistSuccess(res.playlists))
         .catch(onFailure)
 })
 
+playlistIndexContainer.addEventListener('click', (event) => {
+    console.log(event.target)
+    event.preventDefault()
+
+    if (event.target.classList.contains('show-playlist')){
+        const playlistId = event.target.getAttribute('data-id')
+        
+        if (!playlistId) return
+        
+        showPlaylist(playlistId)
+            .then((res) => res.json())
+            .then((res) => {
+                onShowPlaylistSuccess(res.playlist)
+            })
+            .catch(onFailure)
+    }
+})
