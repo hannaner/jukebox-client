@@ -123,8 +123,8 @@ playlistShowContainer.addEventListener('click', (event) => {
         showPlaylist(playlistId)
             .then((res) => res.json())
             .then((res) => {
-                console.log("response: " + res.playlist)
-                showEditPlaylistForm(playlistId)
+                console.log(res.playlist)
+                showEditPlaylistForm(res.playlist)
             })
             .catch(console.error)
     }

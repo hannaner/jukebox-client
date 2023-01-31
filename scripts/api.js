@@ -45,6 +45,8 @@ export const createPlaylist = (data) => {
 export const indexPlaylists = () => {
     return fetch(`http://localhost:8000/playlists`, {
         headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${store.userToken}`
         }
     })
@@ -54,6 +56,8 @@ export const indexPlaylists = () => {
 export const showPlaylist = (playlistId) => {
     return fetch(`http://localhost:8000/playlists/${playlistId}`, {
         headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
             'Authorization': `Bearer ${store.userToken}`
         }
     })
@@ -71,3 +75,4 @@ export const updatePlaylist = (data, playlistId) => {
 		body: JSON.stringify(data),
 	})
 }
+
