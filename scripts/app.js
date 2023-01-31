@@ -7,6 +7,7 @@ import {
     onIndexPlaylistSuccess,
     onShowPlaylistSuccess,
     onUpdatePlaylistSuccess,
+    showEditPlaylistForm,
 } from './ui.js'
 
 import {
@@ -26,6 +27,7 @@ const playlistShowContainer = document.querySelector('#playlist-show-container')
 const playlistCreateContainer = document.querySelector('#playlist-create-container')
 const playlistCreateForm = document.querySelector('#playlist-create-form')
 const startPlaylistCreateButton = document.querySelector('#start-playlist-button')
+const playlistUpdateContainer = document.querySelector('#playlist-update-container')
 
 /* ------ User actions ------ */
 // Sign up
@@ -96,7 +98,6 @@ playlistCreateForm.addEventListener('submit', (event) => {
 
 // Show playlist
 playlistIndexContainer.addEventListener('click', (event) => {
-    console.log(event.target)
     event.preventDefault()
 
     if (event.target.classList.contains('show-playlist')){
@@ -113,11 +114,14 @@ playlistIndexContainer.addEventListener('click', (event) => {
     }
 })
 
-// Update playlist
+// Show update playlist form
 playlistShowContainer.addEventListener('click', (event) => {
     event.preventDefault()
 
     if (event.target.classList.contains('update-playlist')){
+        const playlistId = event.target.getAttribute('data-id')
         
+        showEditPlaylistForm()
     }
+
 })

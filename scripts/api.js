@@ -60,10 +60,14 @@ export const showPlaylist = (playlistId) => {
 }
 
 // update single playlist
-export const updatePlaylist = (playlistId) => {
-    return fetch(`http://localhost:8000/playlists/${playlistId}`, {
-        headers: {
-            'Authorization': `Bearer ${store.userToken}`
-        }
-    })
+export const updatePlaylist = (data, playlistId) => {
+	return fetch(`http://localhost:8000/playlists/${playlistId}`, {
+		method: 'PATCH',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${store.userToken}`,
+		},
+		body: JSON.stringify(data),
+	})
 }

@@ -16,6 +16,8 @@ const messageContainer = document.querySelector('#message-container')
 
 const createPlaylistButton = document.querySelector('#start-playlist-button')
 
+const playlistUpdateContainer = document.querySelector('#playlist-update-container')
+
 
 /* ------ Failure messages ------ */
 // Login failure
@@ -94,31 +96,100 @@ export const onShowPlaylistSuccess = (playlist) => {
     `
     playlistShowContainer.appendChild(playlistName)
 
-    // iterate through songs array if there's an array
-    if (playlist.songs.length > 0){
-        for (let i=0; i < playlist.songs.length ; i++){
-            songDetails.setAttribute("data-id", `${playlist.songs[i]._id}`)
-
-            songDetails.innerHTML = `
-                <p>${playlist.songs[i].title}</p>
-                <p>${playlist.songs[i].artist}</p>
-                <p><a href="${playlist.songs[i].link}">${playlist.songs[i].link}</a></p>
-            `
-            playlistShowContainer.appendChild(songDetails)
-        }
-    } else {
+/** ---- attempt2 using forEach method ----  */   
+    playlist.songs.forEach(song => {
+        console.log(song)
+        songDetails.setAttribute("data-id", `${song._id}`)
+        console.log('attribute set')
         songDetails.innerHTML = `
-            <p>You don't have any songs added!</p>
+            <p>${song.title}</p>
+            <p>${song.artist}</p>
+            <p><a href="${song.link}">play song</a></p>
         `
+        console.log('end of setting innerhtml')
+
+        // somehow not appending child to the div as expected
         playlistShowContainer.appendChild(songDetails)
-    }
+        console.log('added to playlist')
+
+    })
+
     playlistShowContainer.appendChild(updatePlaylistButton)
+}
+
+export const showEditPlaylistForm = (playlist) => {
+    // hide the show container
+    playlistShowContainer.classList.add('hide')
+    // so the update form can come up
+    playlistUpdateContainer.classList.remove('hide')
+    console.log(playlist)
+    // not sure why playlist is undefined
+    
+    // creating update form
+    const updatePlaylistForm = document.createElement('div')
+    // update form's playlist title
+    updatePlaylistForm.innerHTML = `
+        <form data-id="${playlistId}">
+            <input type="text" name="playlist-name" value="${playlist.name}">
+        </form>
+    `
+
+    // creating nested div for each playlist song
+    const playlistSong = document.createElement('div')
+
+    // iterate through songs array and create child form
+    if (playlist.songs.length > 0){
+        playlist.songs.forEach(song => {
+            playlistSong.setAttribute("data-id", `${song._id}`)
+
+            playlistSong.innerHTML = `
+                <input type="text" name="playlist-song-title" value="${song.title}">
+                <input type="text" name="playlist-song-artist" value="${song.artist}">
+                <input type="text" name="playlist-song-link" value="${song.link}">
+                <button type="submit" data-id="${song._id}">Update song</button>
+                <button type="button" data-id="${song._id}">Delete song</button>
+            `
+            updatePlaylistForm.appendChild(playlistSong)
+        })
+    }
 }
 
 // Update playlist
 export const onUpdatePlaylistSuccess = (playlist) => {
-    
-    
+/*
+    // hide the show container
+    playlistShowContainer.classList.add('hide')
+    // so the update form can come up
+    playlistUpdateContainer.classList.remove('hide')
+
+    // creating update form
+    const updatePlaylistForm = document.createElement('div')
+    // update form's playlist title
+    div.innerHTML = `
+        <form data-id="${playlist._id}">
+            <input type="text" name="playlist-name" value="${playlist.name}">
+        </form>
+    `
+
+    // creating nested div for each playlist song
+    const playlistSong = document.createElement('div')
+
+    // iterate through songs array and create child form
+    if (playlist.songs.length > 0){
+        playlist.songs.forEach(song => {
+            playlistSong.setAttribute("data-id", `${song._id}`)
+
+            playlistSong.innerHTML = `
+                <input type="text" name="playlist-song-title" value="${song.title}">
+                <input type="text" name="playlist-song-artist" value="${song.artist}">
+                <input type="text" name="playlist-song-link" value="${song.link}">
+                <button type="submit" data-id="${song._id}">Update song</button>
+                <button type="button" data-id="${song._id}">Delete song</button>
+            `
+            updatePlaylistForm.appendChild(playlistSong)
+        })
+    }
+    */
     messageContainer.innerHTML = `
         Successfully updated playlist!
     `
