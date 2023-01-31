@@ -120,8 +120,13 @@ playlistShowContainer.addEventListener('click', (event) => {
 
     if (event.target.classList.contains('update-playlist')){
         const playlistId = event.target.getAttribute('data-id')
-        
-        showEditPlaylistForm()
+        showPlaylist(playlistId)
+            .then((res) => res.json())
+            .then((res) => {
+                console.log("response: " + res.playlist)
+                showEditPlaylistForm(playlistId)
+            })
+            .catch(console.error)
     }
 
 })

@@ -129,7 +129,7 @@ export const showEditPlaylistForm = (playlist) => {
     const updatePlaylistForm = document.createElement('div')
     // update form's playlist title
     updatePlaylistForm.innerHTML = `
-        <form data-id="${playlistId}">
+        <form data-id="${playlist._id}">
             <input type="text" name="playlist-name" value="${playlist.name}">
         </form>
     `
