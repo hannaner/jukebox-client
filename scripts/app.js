@@ -6,6 +6,7 @@ import {
     onCreatePlaylistSuccess,
     onIndexPlaylistSuccess,
     onShowPlaylistSuccess,
+    onUpdatePlaylistSuccess,
 } from './ui.js'
 
 import {
@@ -14,6 +15,7 @@ import {
     createPlaylist,
     indexPlaylists,
     showPlaylist,
+    updatePlaylist,
 } from './api.js'
 
 const loginContainer = document.querySelector('#login-container')
@@ -67,6 +69,7 @@ startPlaylistCreateButton.addEventListener('click', (event) => {
     playlistCreateContainer.classList.remove('hide')
 })
 
+// Create new playlist
 playlistCreateForm.addEventListener('submit', (event) => {
     event.preventDefault()
 
@@ -91,6 +94,7 @@ playlistCreateForm.addEventListener('submit', (event) => {
         .catch(onFailure)
 })
 
+// Show playlist
 playlistIndexContainer.addEventListener('click', (event) => {
     console.log(event.target)
     event.preventDefault()
@@ -106,5 +110,14 @@ playlistIndexContainer.addEventListener('click', (event) => {
                 onShowPlaylistSuccess(res.playlist)
             })
             .catch(onFailure)
+    }
+})
+
+// Update playlist
+playlistShowContainer.addEventListener('click', (event) => {
+    event.preventDefault()
+
+    if (event.target.classList.contains('update-playlist')){
+        
     }
 })

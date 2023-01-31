@@ -1,6 +1,7 @@
 import { store } from './store.js'
 
 /* ------ Auth login/signup Actions ------ */
+// sign up
 export const signup = (data) => {
     return fetch(`http://localhost:8000/sign-up`, 
     {
@@ -13,6 +14,7 @@ export const signup = (data) => {
     })
 }
 
+// login
 export const login = (data) => {
     return fetch(`http://localhost:8000/login`, 
     {
@@ -26,6 +28,7 @@ export const login = (data) => {
 }
 
 /* ------ Playlist Actions ------ */
+// create playlist
 export const createPlaylist = (data) => {
     return fetch(`http://localhost:8000/playlists`, {
         method: 'POST',
@@ -38,6 +41,7 @@ export const createPlaylist = (data) => {
     })
 }
 
+// index playlist belonging to user
 export const indexPlaylists = () => {
     return fetch(`http://localhost:8000/playlists`, {
         headers: {
@@ -46,7 +50,17 @@ export const indexPlaylists = () => {
     })
 }
 
+// show single playlist
 export const showPlaylist = (playlistId) => {
+    return fetch(`http://localhost:8000/playlists/${playlistId}`, {
+        headers: {
+            'Authorization': `Bearer ${store.userToken}`
+        }
+    })
+}
+
+// update single playlist
+export const updatePlaylist = (playlistId) => {
     return fetch(`http://localhost:8000/playlists/${playlistId}`, {
         headers: {
             'Authorization': `Bearer ${store.userToken}`
