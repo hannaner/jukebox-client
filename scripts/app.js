@@ -6,8 +6,9 @@ import {
     onCreatePlaylistSuccess,
     onIndexPlaylistSuccess,
     onShowPlaylistSuccess,
-    onUpdatePlaylistSuccess,
     showEditPlaylistForm,
+    onUpdatePlaylistSuccess,
+    onDeleteSongSuccess,
 } from './ui.js'
 
 import {
@@ -17,6 +18,7 @@ import {
     indexPlaylists,
     showPlaylist,
     updatePlaylist,
+    deleteSongFromPlaylist,
 } from './api.js'
 
 const loginContainer = document.querySelector('#login-container')
@@ -69,6 +71,7 @@ startPlaylistCreateButton.addEventListener('click', (event) => {
     event.preventDefault()
     playlistIndexContainer.classList.add('hide')
     playlistCreateContainer.classList.remove('hide')
+    startPlaylistCreateButton.classList.add('hide')
 })
 
 // Create new playlist
@@ -123,10 +126,80 @@ playlistShowContainer.addEventListener('click', (event) => {
         showPlaylist(playlistId)
             .then((res) => res.json())
             .then((res) => {
-                console.log(res.playlist)
                 showEditPlaylistForm(res.playlist)
             })
-            .catch(console.error)
+            .catch(onFailure)
     }
-
 })
+
+// listener to update playlist name
+playlistUpdateContainer.addEventListener('submit', (event) => {
+    event.preventDefault()
+
+    if (event.target.classList.contains('update-playlist-name-form')){
+        const playlistId = event.target.getAttribute('data-id')
+
+        const newPlaylistName = {
+            playlist:
+            {
+                name: event.target['playlist-name'].value
+            }
+        }
+        updatePlaylist(newPlaylistName, playlistId)
+            .then(onUpdatePlaylistSuccess)
+            .catch(onFailure)
+    }
+})
+
+// listener to delete playlist song
+
+
+playlistUpdateContainer.addEventListener('click', (event) => {
+    const deleteSongItemContainer = document.querySelector('.delete-song-item')
+    
+    console.log('event listener happened')
+    event.preventDefault()
+    // if (event.target.classList.contains('delete-song-item')){
+    //     console.log('in if statement')
+    //     const songId = event.target.getAttribute('data-id')
+        
+    //     if (!songId) return
+
+    //     deleteSongFromPlaylist(songId)
+    //         .then(onDeleteSongSuccess)
+    //         .catch(onFailure)
+    // }
+    console.log(deleteSongItemContainer)
+    const touchedTarget = event.target
+    console.log("touched target")
+    console.log(touchedTarget)
+
+    let playlistId
+
+    if (touchedTarget){
+        console.log('in if statement')
+        const songId = touchedTarget.getAttribute('data-id')
+        console.log(`songId ${songId}`)
+        //Uncaught TypeError: Cannot read properties of null (reading 'getAttribute')
+        // at HTMLDivElement.<anonymous> (app.js:180:52)
+        // (anonymous) @ app.js:180
+        
+        if (deleteSongItemContainer){
+            playlistId = deleteSongItemContainer.getAttribute('data-id')
+        }
+        console.log(`playlistId ${playlistId}`)
+        
+
+        if (!songId) return
+
+        deleteSongFromPlaylist(songId)
+            .then(console.log)
+            .then(onDeleteSongSuccess)
+            .then(indexPlaylists)
+            .catch(onFailure)
+    }
+})
+
+// listener to add playlist song
+
+// delete playlist and its songs

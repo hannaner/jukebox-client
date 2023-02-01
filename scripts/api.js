@@ -72,7 +72,18 @@ export const updatePlaylist = (data, playlistId) => {
 			'Content-Type': 'application/json',
 			'Authorization': `Bearer ${store.userToken}`,
 		},
-		body: JSON.stringify(data),
+		body: JSON.stringify(data)
 	})
 }
 
+export const deleteSongFromPlaylist = (playlistId, songId) => {
+    return fetch(`http://localhost:8000/songs/${songId}`, {
+        method: 'DELETE',
+		headers: {
+			'Accept': 'application/json',
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${store.userToken}`,
+		},
+        body: JSON.stringify(playlistId)
+    })
+}

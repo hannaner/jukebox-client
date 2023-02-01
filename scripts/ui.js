@@ -59,11 +59,6 @@ export const onCreatePlaylistSuccess = () => {
 export const onIndexPlaylistSuccess = (playlists) => {
     playlists.forEach((playlist) => {
         const div = document.createElement('div')
-
-        // come back to create anchor tag for new div
-        // const playlistShowLink = document.createElement('a')
-        // div.append(playlistShowLink)
-
         div.classList.add('playlist-card')
 
         div.innerHTML = `
@@ -95,8 +90,7 @@ export const onShowPlaylistSuccess = (playlist) => {
         <button data-id="${playlist._id}" class="update-playlist">Update playlist</button>
     `
     playlistShowContainer.appendChild(playlistName)
-
-/** ---- attempt2 using forEach method ----  */   
+  
     playlist.songs.forEach(song => {
         const songDetails = document.createElement('div')
         songDetails.setAttribute("data-id", `${song._id}`)
@@ -106,9 +100,7 @@ export const onShowPlaylistSuccess = (playlist) => {
             <p>${song.artist}</p>
             <p><a href="${song.link}">play song</a></p>
         `
-        // somehow not appending child to the div as expected
         playlistShowContainer.appendChild(songDetails)
-
     })
 
     playlistShowContainer.appendChild(updatePlaylistButton)
@@ -121,16 +113,22 @@ export const showEditPlaylistForm = (playlist) => {
     // so the update form can come up
     playlistUpdateContainer.classList.remove('hide')
 
+    playlistUpdateContainer.classList.add(`${playlist._id}`)
+
     // creating update form
     const updatePlaylistForm = document.createElement('div')
+
+
     // update form's playlist title
     updatePlaylistForm.innerHTML = `
-        <form data-id="${playlist._id}">
+        <form data-id="${playlist._id}" class="update-playlist-name-form">
             <input type="text" name="playlist-name" value="${playlist.name}">
             <button type="submit">Update name</button>
         </form>
     `
+    // form to add a song to playlist
     const addSongToPlaylistForm = document.createElement('div')
+    addSongToPlaylistForm.setAttribute("class", "add-song-item")
     addSongToPlaylistForm.innerHTML = `
         <p>Add another song</p>
         <form id="playlist-add-song-form">
@@ -141,18 +139,20 @@ export const showEditPlaylistForm = (playlist) => {
         </form>
     `
     // creating nested div for each playlist song
-    
+    // delete button in each div
     if (playlist.songs.length > 0){
         playlist.songs.forEach(song => {
             const updatePlaylistSongForm = document.createElement('div')
             
             updatePlaylistSongForm.setAttribute("data-id", `${song._id}`)
+            
+            updatePlaylistSongForm.setAttribute("class", "delete-song-item")
 
             updatePlaylistSongForm.innerHTML = `
-                <input type="text" name="playlist-song-title" value="${song.title}">
-                <input type="text" name="playlist-song-artist" value="${song.artist}">
-                <input type="text" name="playlist-song-link" value="${song.link}">
-                <button type="button" data-id="${song._id}">Delete song</button>
+                <p>${song.title}</p>    
+                <p>${song.artist}</p>    
+                <p>${song.link}</p>
+                <button type="button" data-id="${song._id}" class="delete-song-item-button">Delete song</button>
             `
             updatePlaylistForm.appendChild(updatePlaylistSongForm)
         })
@@ -167,4 +167,14 @@ export const onUpdatePlaylistSuccess = (playlist) => {
     messageContainer.innerHTML = `
         Successfully updated playlist!
     `
+}
+
+export const onDeleteSongSuccess = (playlist) => {
+    messageContainer.innerHTML = `
+        Successfully deleted song from playlist
+    `
+}
+
+export const onAddSong = (playlist) => {
+
 }
